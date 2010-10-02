@@ -5,7 +5,6 @@ class CreateProfiles < ActiveRecord::Migration
       t.string   "first_name",       :limit => 60
       t.string   "last_name",        :limit => 60
       t.text   "body" 
-      t.string   "image",            :limit => 300
       t.string   "location",            :limit => 50
       t.datetime "birthday"   
       t.boolean "hide_birthday", :default => true

@@ -88,11 +88,11 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.xml
   def update
-    @profile = Profile.find(params[:id])
-
+    @profile = Profile.find(session[:user_id])
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
+        # format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
+          format.html { redirect_to(:controller =>'profiles', :action => 'index',  :notice => 'Profile was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

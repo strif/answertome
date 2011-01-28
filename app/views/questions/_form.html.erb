@@ -13,8 +13,14 @@
 </p>  
 
 
+<p>
+	<%= f.label :topic_names, "Topics:" %>
+	<%= f.text_field :topic_names %><%= mark_required(@question, :topic_names)%>
+</p>
+
+
 <div class="actions">
-    <%= f.submit %>
+   <div class="submit"><%= f.submit %></div>
   </div>
     
 <% end %>

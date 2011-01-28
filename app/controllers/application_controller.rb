@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   
   
-  
+
   
   protected 
   
@@ -22,6 +22,13 @@ class ApplicationController < ActionController::Base
   
   
   private
+  def redirect_logged
+    if session[:user_id]
+        flash[:notice] = "You are already logged in." 
+        redirect_to(:controller => 'profiles', :action => 'index') 
+        return false
+    end 
+  end
   
   def authorize_access
     if !session[:user_id]

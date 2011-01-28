@@ -2,7 +2,7 @@ Qna::Application.routes.draw do
 
   resources :users , :path => "member" do
     collection do
-      get :new
+     get :new
      get :login
      get :logout
      get :edit, :path => "update_settings"
@@ -13,8 +13,7 @@ Qna::Application.routes.draw do
 
   resources :questions, :path_names => { :new => 'ask' } do
    resources :answers
-    collection do
-     
+    collection do     
       get :with_answers
       get :without_answers
     end
@@ -52,7 +51,7 @@ Qna::Application.routes.draw do
   # resources :question_topics
   # resources :attachings
   # resources :question_followings
-  # resources :topic_followings
+
   # resources :user_followings
   # resources :messages
   # resources :infos
@@ -60,11 +59,15 @@ Qna::Application.routes.draw do
   # resources :settings
     
   resources :rep_events
-  # resources :topics
+  resources :topics
+  resources :topic_followings
+  
+  
   # resources :categories
   # resources :comments
    resources :answers
    resources :questions
+
   # 
   
 
@@ -126,6 +129,7 @@ Qna::Application.routes.draw do
   match 'login' =>'users#login' 
   match 'logout' =>'users#logout' 
   match ':username' =>'profiles#show'
+  match ':topics:name' =>'topics#show'
   
   # See how all your routes lay out with "rake routes"
  

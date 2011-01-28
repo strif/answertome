@@ -1,3 +1,4 @@
+<%=  link_to 'Create Profile', :controller => 'profiles' , :action => 'new' if @profile.blank? %>
 <% unless @profile.blank? %><%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit' %><% end%>
 <%= link_to 'Change  Email & Password', :controller => 'users' , :action => 'edit' %>
 <br/>

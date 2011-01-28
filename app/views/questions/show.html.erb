@@ -1,6 +1,9 @@
-<%= render :partial => @question %>
 <%= link_to 'Edit', :controller => 'questions', :action => 'edit' %> |
 <%= link_to 'Back',:controller => 'questions'  %>
+<%= render :partial => @question %>
+Topics:<%= render :partial => @question.topics %>
+<hr>
+
 
 
 <h3>Answers</h3>
@@ -8,10 +11,16 @@
 	<%= render :partial => @question.answers.order("votes desc,created_at asc") %>
 </div>
 
+
 <%= form_for [@question, Answer.new] do |f| %>
-	<p>
-		<%= f.label :body, "New Answer" %><br />
-		<%= f.text_area :body %>
-	</p>
-	<p><%= f.submit "Add Answer" %></p>
+
+	<div class="formline">
+	<div class="formlabelcenter"><%= f.label :body, "New Answer" %></div>
+	<div class="formfield">	<%= f.text_area :body %></div>
+	</div>
+	
+	<div class="formline">
+	<div class="submit">
+	<%= f.submit "Add Answer" %></div>
+	</div>
 <% end %>

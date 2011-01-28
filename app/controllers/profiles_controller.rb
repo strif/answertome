@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
    @user = User.find(session[:user_id]) # user object initialized by id
    # if user profile is not found go to new
       if @user.profile.blank?
-        flash[:notice] = "No profile found! Create one !"                                   
+        flash[:notice] = "No profile found!"                                   
         # redirect_to(:action => 'new')                                  
       else # else show logged user profile
         @profile = Profile.find(session[:user_id])  
@@ -76,7 +76,8 @@ class ProfilesController < ApplicationController
     # user.profile.create(params[:profile])
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully created.') }
+        # format.html { redirect_to(@profile, :notice => 'Profile was successfully created.') }
+        format.html { redirect_to(:controller =>'profiles', :action => 'index', :notice => 'Profile was successfully created.') }
         format.xml  { render :xml => @profile, :status => :created, :location => @profile }
       else
         format.html { render :action => "new" }
@@ -91,8 +92,9 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(session[:user_id])
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        # format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
-          format.html { redirect_to(:controller =>'profiles', :action => 'index',  :notice => 'Profile was successfully updated.') }
+          #format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
+          
+        format.html { redirect_to(:controller =>'profiles', :action => 'index', :notice => "Profile was successfully updated.") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

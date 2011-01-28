@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
-  has_many:questions
-  has_many:answers
+  has_many :questions
+  has_many :answers
   has_one :profile
-  has_many:rep_events
+  has_many :rep_events
+  has_many :topic_followings 
+  has_many :topics, :through => :topic_followings, :include => [:questions]
   is_gravtastic!
   
   validates :email,  
@@ -42,11 +44,19 @@ class User < ActiveRecord::Base
   
   
   
-    def to_param 
+  def to_param 
         username
-      end
+  end
+  
   
 
+  def redirect_logged
+    if session[:user_id]
+        flash[:notice] = "You are already logged in." 
+        redirect_to(:controller => 'profiles', :action => 'index') 
+        return false
+    end 
+  end
   
   
   #note that username.downcase will down case users input

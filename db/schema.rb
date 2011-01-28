@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100918215858) do
+ActiveRecord::Schema.define(:version => 20110121020738) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                                       :null => false
@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(:version => 20100918215858) do
     t.text     "body",                                              :null => false
     t.string   "status",      :limit => 12, :default => "approved", :null => false
     t.datetime "created_at",                                        :null => false
-    t.float    "votes"
+    t.integer  "votes"
   end
+
+  add_index "answers", ["id"], :name => "answers_id_key", :unique => true
 
   create_table "attachings", :id => false, :force => true do |t|
     t.integer "user_id",     :null => false
@@ -55,27 +57,26 @@ ActiveRecord::Schema.define(:version => 20100918215858) do
 
   create_table "messages", :force => true do |t|
     t.integer "idto"
-    t.string  "sender",                 :null => false
-    t.string  "to_id",                  :null => false
+    t.string  "sender",    :null => false
+    t.string  "to_id",     :null => false
     t.string  "subject"
-    t.text    "body",                   :null => false
-    t.integer "date_sent",              :null => false
-    t.integer "is_read",   :limit => 2, :null => false
-    t.integer "is_spam",   :limit => 2, :null => false
-    t.integer "is_trash",  :limit => 2, :null => false
-    t.integer "is_draft",  :limit => 2, :null => false
-    t.integer "is_email",  :limit => 2, :null => false
+    t.text    "body",      :null => false
+    t.integer "date_sent", :null => false
+    t.integer "is_read",   :null => false
+    t.integer "is_spam",   :null => false
+    t.integer "is_trash",  :null => false
+    t.integer "is_draft",  :null => false
+    t.integer "is_email",  :null => false
   end
 
   create_table "profiles", :id => false, :force => true do |t|
-    t.integer  "user_id",                                        :null => false
+    t.integer  "user_id",                                       :null => false
     t.string   "first_name",    :limit => 60
     t.string   "last_name",     :limit => 60
     t.text     "body"
-    t.string   "image",         :limit => 300
     t.string   "location",      :limit => 50
     t.datetime "birthday"
-    t.boolean  "hide_birthday",                :default => true
+    t.boolean  "hide_birthday",               :default => true
     t.string   "gender",        :limit => 6
   end
 
@@ -84,11 +85,6 @@ ActiveRecord::Schema.define(:version => 20100918215858) do
     t.integer  "user_id",       :null => false
     t.datetime "last_notified"
     t.datetime "last_updated"
-  end
-
-  create_table "question_topics", :id => false, :force => true do |t|
-    t.integer "question_id", :null => false
-    t.integer "topic_id",    :null => false
   end
 
   create_table "questions", :force => true do |t|
@@ -102,12 +98,15 @@ ActiveRecord::Schema.define(:version => 20100918215858) do
     t.integer  "answers_count"
   end
 
-  create_table "rep_events", :id => false, :force => true do |t|
-    t.integer  "event_id",                 :null => false
-    t.string   "event_type", :limit => 12, :null => false
-    t.integer  "user_id",                  :null => false
-    t.integer  "author_id",                :null => false
-    t.datetime "created_at",               :null => false
+  add_index "questions", ["id"], :name => "questions_id_key", :unique => true
+
+  create_table "rep_events", :force => true do |t|
+    t.integer  "answer_id",                 :null => false
+    t.integer  "question_id",               :null => false
+    t.string   "event_type",  :limit => 12, :null => false
+    t.integer  "user_id",                   :null => false
+    t.integer  "author_id",                 :null => false
+    t.datetime "created_at",                :null => false
   end
 
   create_table "settings", :id => false, :force => true do |t|
@@ -121,15 +120,29 @@ ActiveRecord::Schema.define(:version => 20100918215858) do
     t.boolean "newsletters", :default => false, :null => false
   end
 
-  create_table "topic_followings", :id => false, :force => true do |t|
-    t.integer "topic_id", :null => false
-    t.integer "user_id",  :null => false
+  create_table "taggings", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topic_followings", :force => true do |t|
+    t.integer "user_id"
+    t.integer "topic_id"
   end
 
   create_table "topics", :force => true do |t|
     t.string  "name",            :limit => 60, :null => false
-    t.integer "followers"
+    t.integer "users_count"
     t.integer "questions_count"
+  end
+
+  add_index "topics", ["id"], :name => "topics_id_key", :unique => true
+
+  create_table "topics_users", :id => false, :force => true do |t|
+    t.integer "topic_id", :null => false
+    t.integer "user_id",  :null => false
   end
 
   create_table "user_followings", :id => false, :force => true do |t|

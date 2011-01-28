@@ -1,0 +1,5 @@
+<%= div_for topic do %>
+<%= link_to_unless_current h(topic.name), topic %>
+<%= link_to(pluralize(topic.questions_count,'question'),topic, :anchor => 'question') unless topic.questions_count.blank? %>
+<%= link_to 'Follow',new_topic_following_path(:topic_id => topic.id) %> 
+<% end %>

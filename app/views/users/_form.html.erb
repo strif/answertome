@@ -1,36 +1,28 @@
 <%= form_for(@user) do |f| %>
 <%= render "shared/error_messages", :target => @user %>
-	<p>
-	<%= f.label :username, "Username:" %>
-	<%= f.text_field :username %><%= mark_required(@user, :username)%>
-	</p>
-	
 
+	<div class="formline">
+	<div class="formlabel"><%= f.label :username, "Username:" %></div>
+	<div class="formfield"><%= f.text_field :username %><%= mark_required(@user, :username)%></div>
+	</div>
 	
-	<p>
-		<%= f.label :email, "Email:" %> 
-		<%= f.text_field :email %><%= mark_required(@user, :email)%>
-	</p>
+	<div class="formline">
+	<div class="formlabel"><%= f.label :email, "Email:" %></div>
+	<div class="formfield"><%= f.text_field :email %><%= mark_required(@user, :email)%></div>
+	</div>
 	
+	<div class="formline">
+	<div class="formlabel">	<%= f.label :password, "Password:" %></div>
+	<div class="formfield"><%= f.password_field :password %></div>
+	</div>
 	
+	<div class="formline">
+	<div class="formlabel">	<%= f.label :password_confirmation, "Repeat Password:" %></div>
+	<div class="formfield"><%= f.password_field :password_confirmation %></div>
+	</div>
+	
+	<div class="formline">
+    <div class="submit"><%= f.submit %></div>
+	</div>
 
-	
-	
-	<p>
-		<%= f.label :password, "Password:" %>
-		<%= f.password_field :password %>
-	</p>
-	
-	
-	<p>
-		<%= f.label :password_confirmation, "Repeat Password:" %>
-		<%= f.password_field :password_confirmation %>
-	</p>
-
- 
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

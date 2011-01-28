@@ -4,6 +4,18 @@ class QuestionsController < ApplicationController
   # GET /questions.xml
     # This uses the with_no_answer :scope (see question model)
   def index
+ #@questions = User.find(2).topics.map { |t| t.questions }
+  #@usertopics = User.find(2).topics
+  #@questions2 = Question.all
+  #@questions = @usertopics.@questions2
+  
+#  @questions = @user.questions
+  
+  #<%= @questions = topic.questions %>
+  #<%= render :partial => @questions%>
+  
+  
+   # @usertags = User.find(session[:user_id]).topics
     @questions = Question.approved.recent
     respond_to do |format|
       format.html # index.html.erb
@@ -21,8 +33,7 @@ class QuestionsController < ApplicationController
   
   
   # This uses the with_no_answer :scope (see question model)
-  def without_answers
-    
+  def without_answers    
       @questions = Question.with_no_answer
       render(:action => "index")
    end
@@ -32,7 +43,6 @@ class QuestionsController < ApplicationController
   # GET /questions/1.xml
   def show
     @question = Question.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @question }

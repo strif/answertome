@@ -1,6 +1,6 @@
 <%= div_for answer do %>
 [<%= answer.votes %>]
 <%= answer.body %>
-<%= link_to 'Vote Up',new_rep_event_path(:event_id => answer.id, :event_type => "up", :author_id=>answer.user_id, :question_id=>answer.question_id) %> 
-<%= link_to 'Vote Down',new_rep_event_path(:event_id => answer.id, :event_type => "down", :author_id=>answer.user_id, :question_id=>answer.question_id) %>
+<%= link_to 'Vote Up',new_rep_event_path(:answer_id => answer.id, :event_type => "up", :author_id=>answer.user_id, :question_id=>answer.question_id) %> 
+<%= link_to 'Vote Down',new_rep_event_path(:answer_id => answer.id, :event_type => "down", :author_id=>answer.user_id, :question_id=>answer.question_id) %>
 <% end %>

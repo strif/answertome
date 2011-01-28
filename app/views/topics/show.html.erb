@@ -1,5 +1,7 @@
-<p id="notice"><%= notice %></p>
 
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<h3>Questions</h3>
+<div id="questions">
+	<%= render :partial => 	@topic.questions %>
+</div>
+

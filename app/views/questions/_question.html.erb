@@ -4,7 +4,5 @@
 <%= simple_format h(question.body) -%>
 <%= time_ago_in_words(question.created_at) -%> ago
 <%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %>
-<hr>
-
 <% end %>
 

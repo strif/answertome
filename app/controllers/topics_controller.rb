@@ -3,7 +3,10 @@ class TopicsController < ApplicationController
   # GET /topics.xml
   def index
     @topics = Topic.all
-
+    if session[:user_id]
+    @user = User.find(session[:user_id])
+    @followed = @user.topic_followings
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @topics }
@@ -13,7 +16,8 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.xml
   def show
-    @topic = Topic.find(params[:id])
+   @topic = Topic.find_by_name(params[:id])
+   # @topic = Topic.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

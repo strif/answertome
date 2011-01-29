@@ -1,8 +1,21 @@
 <%= div_for question do %>
-<h3> 
-<%= link_to_unless_current h(question.title), question %></h3><%= link_to(pluralize(question.answers_count,'answer'),question, :anchor => 'answer') unless question.answers_count.blank? %> 
-<%= simple_format h(question.body) -%>
-<%= time_ago_in_words(question.created_at) -%> ago
-<%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %>
+<div class="answercontainer">
+	<div class="answerscount">
+		<%= link_to(pluralize(question.answers_count,'answer'),question, :anchor => 'answer') unless question.answers_count.blank? %>
+	</div>
+	
+	<div class="question_title">
+		<h2><%=  link_to_unless_current h(question.title), question %></h2>
+	</div>
+ 
+	<div class="question_description">
+		<%=   h(question.body)  %>
+	</div>
+	
+	<div class="question_date">
+		<%=  time_ago_in_words(question.created_at)  %> ago
+	</div>
+</div>
 <% end %>
 
+<div class="clear"></div>

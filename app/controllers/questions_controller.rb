@@ -4,7 +4,13 @@ class QuestionsController < ApplicationController
   # GET /questions.xml
     # This uses the with_no_answer :scope (see question model)
   def index
- #@questions = User.find(2).topics.map { |t| t.questions }
+    # if user is logged on, display questions that contain topics that the user is following
+  if session[:user_id]
+    @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent }.flatten.uniq
+  else
+    #else display all
+    @questions = Question.approved.recent
+  end
   #@usertopics = User.find(2).topics
   #@questions2 = Question.all
   #@questions = @usertopics.@questions2
@@ -16,7 +22,7 @@ class QuestionsController < ApplicationController
   
   
    # @usertags = User.find(session[:user_id]).topics
-    @questions = Question.approved.recent
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @questions }

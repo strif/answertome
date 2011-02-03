@@ -39,4 +39,10 @@ module ApplicationHelper
     "<img src=\"#{gravatar_url(email, gravatar_options)}\" alt=\"#{alt_text}\" height=\"#{img_size}\" width=\"#{img_size}\" />"
 
   end
+  
+  
+  
+  
+  def getmenu
+  end
 end

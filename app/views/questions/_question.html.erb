@@ -1,8 +1,10 @@
 <%= div_for question do %>
 <div class="answercontainer">
-	<div class="answerscount">
-		<%= link_to(pluralize(question.answers_count,'answer'),question, :anchor => 'answer') unless question.answers_count.blank? %>
-	</div>
+
+		<div class="answer_circle">			
+		<p><%= question.answers_count unless question.answers_count.blank? %></p>
+		</div>
+
 	
 	<div class="question_title">
 		<h2><%=  link_to_unless_current h(question.title), question %></h2>

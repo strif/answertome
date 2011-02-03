@@ -4,7 +4,6 @@ body, html {
 	background-color: #fff; color: #333; 
 	background:url('../images/header.png');
 	background:#f4f6f6 url('../images/background.png') 50% 0 repeat-y !important;
-	height:100%;
 	width:100%;
 	margin:0;
 	padding:0;
@@ -17,7 +16,13 @@ div{
 	
 	
 	
-	
+ a {color:#0082ff;}      /* unvisited link */
+ a:link{color:#0082ff;}      /* unvisited link */
+ a:visited  {color:#5a00ff;}  /* visited link */
+ a:hover {color:#0024ff;}  /* mouse over link */
+ a:active {color:#454545;}  /* selected link */
+
+
 	
 	
 	
@@ -31,47 +36,57 @@ div{
 
 
  /* Navigation */
-#navigation { 
-	width:100%;
-	margin:auto;
-	text-decoration:  none;
+#header {
+		width:100%;
 	}
-
-#navigation li {
+	
+	
+	
+#header li{
   text-decoration:  none;
-	display: inline;
 	position: relative;
 	display: inline;
 	z-index:1000;
-	color:#ffffff;
+	color:#0082ff;
 	font-size:13px;
 	padding:0 11px 0 0;
 	height:59px;
 	}
 
-#navigation li:hover { 
+
+#header a {color:#0082ff;}      /* unvisited link */
+#header a:link{color:#0082ff;}      /* unvisited link */
+#header a:visited  {color:#5a00ff;}  /* visited link */
+#header a:hover {color:#0024ff;}  /* mouse over link */
+#header a:active {color:#454545;}  /* selected link */
+
+
+
+#main_navigation, #user_navigation { 
+	margin:auto;
 	text-decoration:  none;
-	color: blue; 
-	background-color:white; 
-	}
-#navigation li { 
-	color: #000; 
 	}
 
-#navigation li:visited { 
-	color: #666; 
-	}
-	
-	
-	
-#navigation	a, #navigation	a:hover, #navigation	a:visited, #navigation	a:link, #navigation	a:active {
-	  text-decoration:  none;
-		font-size:110%;
-	  } 
+
+
 
 	
 	
+
 	
+	#main_navigation{float:left; text-align:left;}
+	#user_navigation{float:right; text-align:right;}
+
+
+
+#main{
+	float:right;
+		text-decoration:  none;
+}
+#user{
+		float:left;
+			text-decoration:  none;
+	}
 	
 /* yan = 970px  quora = 980*/
 #main {
@@ -165,7 +180,7 @@ input:focus, textarea:focus {
  /* question containers */	
 	.answercontainer{
 	clear:both;
-	margin:10px;
+	padding:5px;
 	}
 
 	.answerscount{
@@ -192,6 +207,32 @@ input:focus, textarea:focus {
 	.question_date{
 	float:left;
 	}
+	
+	.question_date, .question_description, .question_title{
+		margin-top:7px;
+		
+	}
+
+/* css3 cyrcles */
+.answer_circle{
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: #c06;
+	float:left;
+	margin-right:5px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+}
+
+.answer_circle p{
+	margin-top:5px;
+}
+
+
+
 
 
  /* --------Special -------- */

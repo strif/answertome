@@ -79,7 +79,7 @@ div{
 
 #main{
 	float:center;
-		text-decoration:  none;
+	text-decoration:  none;
 }
 #user{
 		float:left;
@@ -89,7 +89,7 @@ div{
 /* yan = 970px  quora = 980*/
 #main {
 	margin:0 auto;
-	text-align:center;
+	text-align:left;
 	width: 960px;
 	float:center;
 	}
@@ -98,7 +98,17 @@ div{
 	color:green;
 	}
 
+#footer {
+	text-align:center;
+	margin-top:50px;
+	}
 
+#footer_menu li{
+	text-decoration:  none;
+	display: inline;
+	text-align: center;
+	margin:0 11px 0 0;
+}
 
 	/* CSS3 FORM */
 

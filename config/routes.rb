@@ -1,4 +1,11 @@
 Qna::Application.routes.draw do
+  
+  
+  #static page roots
+  match 'about' =>'static#about'
+  match 'contact' =>'static#contact'
+  match 'privacy' =>'static#privacy'
+  match 'help' =>'static#help'
 
   resources :users , :path => "member" do
     collection do
@@ -130,6 +137,9 @@ Qna::Application.routes.draw do
   match 'logout' =>'users#logout' 
   match ':username' =>'profiles#show'
   match ':topics:name' =>'topics#show'
+  
+  
+
   
   # See how all your routes lay out with "rake routes"
  

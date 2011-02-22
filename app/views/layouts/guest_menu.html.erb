@@ -36,7 +36,22 @@
 <div id="main">
 <div id="notice"><%= notice %></div>
 <%= yield %>
-<div id="footer">© Answer To Me, All Rights Reserved.</div>
+
+<div id="footer">
+<div id="footer_menu">
+	<ul>
+	<li><%= link_to 'Help', help_url %></li>
+	<li><%= link_to 'About us', about_url %></li>
+	<li><%= link_to 'Privacy', privacy_url %></li>
+	<li><%= link_to 'Contact Us', contact_url %></li>
+	</ul>
+</div>
+
+<div id ="copyrights">© Answer To Me, All Rights Reserved.
+<br /> Alpha Version 	
+</div>
+</div>
+
 </div>
 
 </body>

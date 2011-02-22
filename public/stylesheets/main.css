@@ -78,7 +78,7 @@ div{
 
 
 #main{
-	float:right;
+	float:center;
 		text-decoration:  none;
 }
 #user{
@@ -219,10 +219,7 @@ input:focus, textarea:focus {
 	background: #c06;
 	float:left;
 	margin-right:5px;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
-	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
-	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+background: none repeat scroll 0 0 white;
 }
 
 .answer_circle p{

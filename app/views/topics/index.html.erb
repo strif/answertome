@@ -1,3 +1,5 @@
-<h1>Listing topics</h1>
-<%= render :partial => @topics%>
-
+<h1>Mosts Questioned topics</h1>
+<%= render :partial => 'topics/topicq', :collection => @topicsq, :as => :topic %>
+<div class="clear"></div>
+<h1>Most Followed topics</h1>
+<%= render :partial => 'topics/topicf', :collection => @topicsf, :as => :topic %>

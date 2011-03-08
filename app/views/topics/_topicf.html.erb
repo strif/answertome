@@ -1,5 +1,5 @@
 <div class="topic">
 <%= link_to_unless_current h(topic.name), topic %>
-[<%= pluralize(topic.questions_count, 'question')  %>]
+[<%= pluralize(topic.users_count, 'user')  %>]
 <%= link_to 'Follow',new_topic_following_path(:topic_id => topic.id) %> 
 </div>

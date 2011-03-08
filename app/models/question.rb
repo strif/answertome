@@ -5,6 +5,7 @@ class Question < ActiveRecord::Base
   has_many :topics, :through => :taggings, :include => [:users]
 
 
+
    validates :title,
              :presence => true,
              :uniqueness => true,
@@ -13,11 +14,23 @@ class Question < ActiveRecord::Base
    validates :body,
              :presence => true,
              :length => {:maximum => 4096}
+      
+    #The following code changes topic_names to something more readable 
+    #http://stackoverflow.com/questions/3572608/rails-validation-error-messages-customizing-the-attribute-name         
+    attr_accessor :tagging        
+    validates_presence_of :tagging, :message => ": You have to tag this question with at least 1 topic"         
+    def before_validation
+       self.tagging = self.topic_names
+    end
              
     scope :recent, order("created_at DESC")  
     scope :approved, where("status = ?", "approved")       
     scope :answered, approved.recent.where("answers_count > ?", 0)
     scope :with_no_answer, approved.recent.where("answers_count IS NULL")
+    
+    
+    
+
       
     attr_writer :topic_names
     after_save :assign_topics   
@@ -26,6 +39,9 @@ class Question < ActiveRecord::Base
     def to_param
         "#{id}-#{title.parameterize}"
     end
+          
+
+          
           
     #This returns selects all the topics of a given question and it 
     # returns them back in a line.
@@ -49,7 +65,7 @@ class Question < ActiveRecord::Base
     
     
     def assign_topics 
-     if @topic_names 
+     #if @topic_names.length > 2
       new_topics = @topic_names.split(/\s+/).map do |name| 
        Topic.find_or_create_by_name(name) 
       end 
@@ -59,7 +75,7 @@ class Question < ActiveRecord::Base
       end 
       # assign any new tags 
       self.topics = new_topics
-     end 
+    #end
     end
   
   

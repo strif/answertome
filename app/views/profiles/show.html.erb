@@ -9,3 +9,11 @@
 <h3><%= @questions.size %>  Questions Asked:</h3>
 <%= render :partial => '/questions/question_light', :collection => @questions %>
 <% end %>
+
+
+<% unless @user.blank? || @topics.blank? %>
+<h3><%= @user.username.capitalize %> is keen in <%=pluralize(@topics.size,'Topic')%> </h3>
+<%= render :partial => '/topics/topic', :collection => @topics %>
+<% end %>
+
+

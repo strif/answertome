@@ -7,13 +7,14 @@ class ProfilesController < ApplicationController
     redirect_to(:controller => 'users', :action =>'login')   
   else    
    @user = User.find(session[:user_id]) # user object initialized by id
-   # if user profile is not found go to new
+      # if user profile is not found go to new
       if @user.profile.blank?
         flash[:notice] = "No profile found!"                                   
         # redirect_to(:action => 'new')                                  
       else # else show logged user profile
         @profile = Profile.find(session[:user_id])  
         @questions = @user.questions.approved.recent
+        @topics = @user.topics
         render(:controller => 'profiles', :action => 'index')       
       end
   end
@@ -30,6 +31,7 @@ class ProfilesController < ApplicationController
            @user = User.find_by_username(params[:username])
             @profile = @user.profile 
             @questions = @user.questions
+            @topics = @user.topics
              respond_to do |format|
               format.html # show.html.erb
               format.xml  { render :xml => @profile }

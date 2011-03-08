@@ -157,7 +157,37 @@ input:focus, textarea:focus {
 	-webkit-border-radius: 5px;
 	cursor: pointer;
 	}
-	
+
+
+.button{
+		width: auto;
+		padding: 9px 15px;
+		background: #00bef9;
+		border: 0;
+		font-size: 14px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		cursor: pointer;
+		clear:both;
+		margin:0 auto;
+		text-align:center;
+		width:120px;
+		float:right;		
+}
+
+.button a:link, 
+.button a:visited, 
+.button a:visited, 
+.button a:hover, 
+.button a:active, 
+.button a   {
+	text-decoration:none;
+	color:white;
+	}     
+
+
+
+
  /* form containers */	
 	.formline{
 	clear:both;
@@ -186,46 +216,109 @@ input:focus, textarea:focus {
 	
 
  /* question containers */	
+
+#questioncontainer{
+	width:750px;
+	float:left;
+}
+
+
+#sidebar{	
+	width:200px;
+	float:left;
+	}
+
+
+
 	.answercontainer{
+	background-color:#f8f8f8;
 	clear:both;
-	padding:5px;
+	height:55px;
+	margin-top:10px;
 	}
 
 	.answerscount{
 	float:left;
-	margin-right:5px;
 	}
 
 	.question_title{
-	float:left;
-	margin-right:5px;
-	}
-	.question_title h2, .question_title a{
 
+
+	}
+	
+	
+	.question_title h2, .question_title a{
 	font-size:100%;
 	text-decoration:none;
 	margin:0;
 	padding:0;
 	}
 	.question_description{
-	margin-right:5px;
-	float:left;
+
 	}
 
-	.question_date{
+
+	.answer_circle{
 	float:left;
+	width:50px;
+	height:50px;
+	}
+	
+	.question_date{
+
+	}
+	
+	question_tags{
+
 	}
 	
 	.question_date, .question_description, .question_title{
-		margin-top:7px;
+
 		
 	}
 
-/* css3 cyrcles */
+
+.question_details
+{
+	width:200px;
+	float:right;
+}
+
+
+.answer_body
+{ 
+	width:490px;
+	float:left;
+	
+}
+
+
+
+/* Topic Page   */
+.topic{
+margin-right:30px;
+margin-bottom:10px;		
+float:left;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
 .answer_circle{
 	display: block;
-	width: 30px;
-	height: 30px;
+	width: 15px;
+	height: 15px;
 	background: #c06;
 	float:left;
 	margin-right:5px;
@@ -236,7 +329,7 @@ background: none repeat scroll 0 0 white;
 	margin-top:5px;
 }
 
-
+css3 cyrcles */
 
 
 

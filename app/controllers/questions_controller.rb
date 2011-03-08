@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
   else
     #else display all
     @questions = Question.approved.recent
+
   end
   #@usertopics = User.find(2).topics
   #@questions2 = Question.all

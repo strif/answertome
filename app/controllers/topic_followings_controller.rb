@@ -11,13 +11,12 @@ class TopicFollowingsController < ApplicationController
     # @find = TopicFollowing.where("topic_id = ?" ,87)   
    # @user.topic_followings.delete(find)
     
-    @following = TopicFollowing.where("user_id = ? and topic_id = ?", session[:user_id], params[:topic_id])
+   # @following = TopicFollowing.where("user_id = ? and topic_id = ?", session[:user_id], params[:topic_id])
+    @following = TopicFollowing.find_by_user_id_and_topic_id(@user,@topic)
        
     #@tfollowing = @user.topic_followings(@topic)
-    if @following.exists?
-      
- 
-    @user.topic_followings.delete(@following)
+    if @following      
+    @following.destroy
     redirect_to(@topic, :notice => "I hope you find some cool new topics :(") 
     else
       if @topic_follow.save

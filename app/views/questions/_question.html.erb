@@ -2,22 +2,38 @@
 <div class="answercontainer">
 
 		<div class="answer_circle">			
-		<p><%= question.answers_count unless question.answers_count.blank? %></p>
+		<%= question.answers_count unless question.answers_count.blank? %>
 		</div>
 
-	
+	<div class="answer_body">
 	<div class="question_title">
-		<h2><%=  link_to_unless_current h(question.title), question %></h2>
+		<%=  link_to_unless_current h(question.title), question %>
 	</div>
  
 	<div class="question_description">
-		<%=   h(question.body)  %>
+		<%=   truncate(h(question.body), :length => 70)  %>
+	</div>
 	</div>
 	
-	<div class="question_date">
-		<%=  time_ago_in_words(question.created_at)  %> ago
+		<div class="question_details">
+			
+			<div class="question_date">
+				<%=  time_ago_in_words(question.created_at)  %> ago
+			</div>	
+			
+			
+			
+	   <div class="question_tags">[
+	<%= render :partial => '/topics/topic_only',  :as => :topic, :collection => question.topics %> ]
+	
 	</div>
+	
+
+	</div>
+	
 </div>
 <% end %>
 
-<div class="clear"></div>
+
+
+

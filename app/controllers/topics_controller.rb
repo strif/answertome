@@ -2,7 +2,8 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
-    @topics = Topic.all
+    @topicsq = Topic.recent.most_questioned
+    @topicsf = Topic.most_followed
     if session[:user_id]
     @user = User.find(session[:user_id])
     @followed = @user.topic_followings

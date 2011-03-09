@@ -18,26 +18,36 @@ module ApplicationHelper
   # - rating: Can be one of G, PG, R or X. Default is X.
   # - size: Size of the image. Default is 80px.
   # - default: URL for fallback image if none is found or image exceeds rating.
-  def gravatar_url(email,gravatar_options={})
-    grav_url = 'http://www.gravatar.com/avatar.php?'
-    grav_url << "gravatar_id=#{Digest::MD5.new.update(email)}"
-    grav_url << "&rating=#{gravatar_options[:rating]}" if gravatar_options[:rating]
-    grav_url << "&size=#{gravatar_options[:size]}" if gravatar_options[:size]
-    grav_url << "&default=#{gravatar_options[:default]}" if gravatar_options[:default]
-  end
+  # def gravatar_url(email,gravatar_options={})
+  #   grav_url = 'http://www.gravatar.com/avatar.php?'
+  #   grav_url << "gravatar_id=#{Digest::MD5.new.update(email)}"
+  #   grav_url << "&rating=#{gravatar_options[:rating]}" if gravatar_options[:rating]
+  #   grav_url << "&size=#{gravatar_options[:size]}" if gravatar_options[:size]
+  #   grav_url << "&default=#{gravatar_options[:default]}" if gravatar_options[:default]
+  # end
   
   
   # Returns a Gravatar image tag associated with the email parameter.
-  def gravatar(email,gravatar_options={})
-
-    # Set the img alt text.
-    alt_text = 'Gravatar'
-
-    # Sets the image sixe based on the gravatar_options.
-    img_size = gravatar_options.include?(:size) ? gravatar_options[:size] : '80'
-
-    "<img src=\"#{gravatar_url(email, gravatar_options)}\" alt=\"#{alt_text}\" height=\"#{img_size}\" width=\"#{img_size}\" />"
-
+  # def gravatar(email,gravatar_options={})
+  # 
+  #   # Set the img alt text.
+  #   alt_text = 'Gravatar'
+  # 
+  #   # Sets the image sixe based on the gravatar_options.
+  #   img_size = gravatar_options.include?(:size) ? gravatar_options[:size] : '50'
+  # 
+  #   "<img src=\"#{gravatar_url(email, gravatar_options)}\" alt=\"#{alt_text}\" height=\"#{img_size}\" width=\"#{img_size}\" />"
+  # 
+  # end
+  
+  
+  #http://stackoverflow.com/questions/770876/how-do-i-add-gravatar-identicons-into-ruby-on-rails
+  def gravatar_for email, options = {}
+      options = {:alt => 'avatar', :class => 'avatar', :size => 80}.merge! options
+      id = Digest::MD5::hexdigest email.strip.downcase
+      url = 'http://www.gravatar.com/avatar/' + id + '.jpg?s=' + options[:size].to_s
+      options.delete :size
+      image_tag url, options
   end
   
   

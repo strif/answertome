@@ -1,18 +1,17 @@
-<h1>Listing questions</h1>
-
 <div class="button">
 <%= link_to 'New Question', :action => 'new'%>
 </div>
 <div class="clear"></div>
-<div id="questioncontainer">
+
+<div id="questions_container">
 <%= render :partial => @questions%>
 </div>
 
 
 <div id="sidebar">
-Topic Filter: On
+Topic Filter: <%= session[:topic_filter]	%>
+<%= link_to "Switch", topic_filter_path %>
 </div>
 
-<div class="clear"></div>
 
 

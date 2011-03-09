@@ -2,7 +2,7 @@
 <% unless @profile.blank? %><%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit' %><% end%>
 <%= link_to 'Change  Email & Password', :controller => 'users' , :action => 'edit' %>
 <br/>
-<%= image_tag @user.gravatar_url %><br />
+<%= gravatar_for @user.email, :size => 80 %><br />
 Username:<%= @user.username %><br />
 Member Since:<%= @user.created_at.strftime("%d %B %Y")  %><br />
 

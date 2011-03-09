@@ -135,9 +135,10 @@ Qna::Application.routes.draw do
   match 'register' =>'users#new'
   match 'login' =>'users#login' 
   match 'logout' =>'users#logout' 
-  match ':username' =>'profiles#show'
+    match 'topic_filter' =>'questions#topic_filter', :as => "topic_filter"
+  match ':username' =>'profiles#show', :as => "profile"
   match ':topics:name' =>'topics#show'
-  
+
   
 
   

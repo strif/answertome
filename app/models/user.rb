@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :rep_events
   has_many :topic_followings 
   has_many :topics, :through => :topic_followings, :include => [:questions]
-  is_gravtastic!
+
   
   validates :email,  
             :uniqueness => true,

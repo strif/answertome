@@ -20,7 +20,7 @@ gem "pg"
 
 # Custom Gems
 gem "will_paginate", "~> 3.0.pre2"
-gem "gravtastic", "~> 2.1.0"
+gem "gravtastic", "~> 2.1.3"
 
 
 

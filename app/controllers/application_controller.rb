@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   
   layout :get_layout
   
-  
-  
+
 
   
   protected 
@@ -19,6 +18,8 @@ class ApplicationController < ActionController::Base
     
   end
   
+  
+
   
   
   private

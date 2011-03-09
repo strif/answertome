@@ -75,7 +75,10 @@ div{
 	#main_navigation{float:left; text-align:left;}
 	#user_navigation{float:right; text-align:right;}
 
-
+#questions_container{
+		width:750px;
+		float:left;
+	}
 
 #main{
 	float:center;
@@ -214,85 +217,88 @@ input:focus, textarea:focus {
 	float:left;
 	}
 	
+	
+	
+	
+	
+	
+	
 
  /* question containers */	
 
-#questioncontainer{
+
+.question_container{
 	width:750px;
-	float:left;
+	height:50px;
+	float:left;	
+	font-size:14px;
+	margin-top:10px;
+	background-color:#f8f8f8;
+	border: 1px solid #d3d3d3;
 }
 
 
-#sidebar{	
-	width:200px;
-	float:left;
-	}
-
-
-
-	.answercontainer{
-	background-color:#f8f8f8;
-	clear:both;
-	height:55px;
-	margin-top:10px;
-	}
-
-	.answerscount{
-	float:left;
-	}
-
-	.question_title{
-
-
-	}
-	
-	
-	.question_title h2, .question_title a{
-	font-size:100%;
-	text-decoration:none;
-	margin:0;
-	padding:0;
-	}
-	.question_description{
-
-	}
-
-
-	.answer_circle{
-	float:left;
+.answers_number{
 	width:50px;
 	height:50px;
+	float:left;	
+	text-align:center;
+	padding-top:15px;
+}
+
+
+
+.question_main{
+		width:440px;
+		float:left;	
+}
+
+
+.question_body{
+	width:490px;
+	height:40px;
+	float:left;
 	}
 	
-	.question_date{
-
-	}
 	
-	question_tags{
+.profile_picture{	
+	width:50px;
+	float:left;
+}
 
-	}
-	
-	.question_date, .question_description, .question_title{
+.question_title{
+		width:440px;	
 
-		
-	}
+}
+
+.question_description{
+		width:440px;	
+
+}
 
 
-.question_details
-{
-	width:200px;
+question_details{
+
+	width:180px;
 	float:right;
 }
 
+.username{
 
-.answer_body
-{ 
-	width:490px;
-	float:left;
-	
+			font-size:10px;	
 }
 
 
+.question_date{
+
+				font-size:10px;
+	
+}
+
+.question_tags{
+
+	
+}
 
 /* Topic Page   */
 .topic{
@@ -306,30 +312,23 @@ float:left;
 
 
 
-
-
-
-
-
-
-
-
-/* 
-.answer_circle{
-	display: block;
-	width: 15px;
-	height: 15px;
-	background: #c06;
-	float:left;
-	margin-right:5px;
-background: none repeat scroll 0 0 white;
+.profile_box
+{
+float:left;	
+	
 }
 
-.answer_circle p{
-	margin-top:5px;
-}
 
-css3 cyrcles */
+#sidebar{	
+	width:200px;
+	float:right;
+	}
+
+
+
+
+
+
 
 
 
@@ -342,59 +341,4 @@ css3 cyrcles */
 
 
 
-/*
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-
-
-
-div.field, div.actions {
-  margin-bottom: 10px;
-}
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-}
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
-}
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
-}
-*/
 

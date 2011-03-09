@@ -1,29 +1,23 @@
 class QuestionsController < ApplicationController
   
+  
+
+  
+  
+  
+  
+  
   # GET /questions
   # GET /questions.xml
     # This uses the with_no_answer :scope (see question model)
   def index
-    # if user is logged on, display questions that contain topics that the user is following
-  if session[:user_id]
+    # if topic filter is on, display questions that contain topics that the user is following
+  if session[:topic_filter] == "On"
     @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent }.flatten.uniq
   else
     #else display all
     @questions = Question.approved.recent
-
   end
-  #@usertopics = User.find(2).topics
-  #@questions2 = Question.all
-  #@questions = @usertopics.@questions2
-  
-#  @questions = @user.questions
-  
-  #<%= @questions = topic.questions %>
-  #<%= render :partial => @questions%>
-  
-  
-   # @usertags = User.find(session[:user_id]).topics
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @questions }
@@ -32,16 +26,32 @@ class QuestionsController < ApplicationController
   
   
   
+
+  
+  
+  
+  
+  
   # This uses the answered :scope (see question model)
   def with_answers
-     @questions = Question.answered
+    if session[:topic_filter] == "On"
+      @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.answered.recent }.flatten.uniq
+    else
+      #else display all
+      @questions = Question.approved.answered.recent
+    end
     render(:action => "index")
   end
   
   
   # This uses the with_no_answer :scope (see question model)
-  def without_answers    
-      @questions = Question.with_no_answer
+  def without_answers 
+    if session[:topic_filter] == "On"
+      @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.with_no_answer.recent }.flatten.uniq
+    else
+      #else display all
+      @questions = Question.approved.with_no_answer.recent
+    end
       render(:action => "index")
    end
 
@@ -137,4 +147,25 @@ class QuestionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  #This is the topic filter function that turns suggestions on and off
+  #Please check the routs as well
+  def topic_filter
+    referer = request.env["HTTP_REFERER"]   
+    if session[:topic_filter] == "Off"
+      session[:topic_filter] = "On"
+    else
+      session[:topic_filter] = "Off"
+    end    
+    respond_to do |format|
+        format.html { redirect_to(referer, :notice => "Topic Filter is now: " +  session[:topic_filter]) }
+    end   
+  end
+  
+  
+  
+
+  
+  
 end

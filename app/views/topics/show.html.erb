@@ -1,6 +1,7 @@
-
-
-<h3>Questions</h3>
+<h2><%= @topic.name %> [<%= link_to 'Follow', new_topic_following_path(:topic_id => @topic.id) %>]</h2> 
+Questions asked: <%= @topic.questions_count %> 
+Followers: <%= @topic.users_count %>
+<h2>Questions and Answers about: <%=  	@topic.name %></h2>
 <div id="questions">
 	<%= render :partial => 	@topic.questions %>
 </div>

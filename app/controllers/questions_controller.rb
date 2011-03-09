@@ -1,11 +1,6 @@
 class QuestionsController < ApplicationController
-  
-  
+  before_filter :authorize_access, :only => [:topic_filter]
 
-  
-  
-  
-  
   
   # GET /questions
   # GET /questions.xml

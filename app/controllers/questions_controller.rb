@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
     @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent }.flatten.uniq 
   else
     @questions = Question.approved.recent
+  end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @questions }

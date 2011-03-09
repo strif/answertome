@@ -7,8 +7,8 @@ class QuestionsController < ApplicationController
     # This uses the with_no_answer :scope (see question model)
   def index
     # if topic filter is on, display questions that contain topics that the user is following
-  if session[:topic_filter] == "On" and session[:user_id]
-    @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent }.flatten.uniq
+  if session[:topic_filter] == "On"  
+    @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent }.flatten.uniq if session[:user_id]
   else
     #else display all
     @questions = Question.approved.recent

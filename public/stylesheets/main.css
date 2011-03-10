@@ -11,7 +11,8 @@ body, html {
 	}
 		
 div{
-	border: 0px solid black;
+
+		border:0px solid #d3d3d3;
 	}
 	
 	
@@ -224,7 +225,7 @@ input:focus, textarea:focus {
 	
 	
 
- /* question containers */	
+ /* question containers (listing)*/	
 
 
 .question_container{
@@ -277,7 +278,7 @@ input:focus, textarea:focus {
 }
 
 
-question_details{
+.question_details{
 
 	width:180px;
 	float:right;
@@ -309,14 +310,13 @@ float:left;
 }
 
 
-
-
-
 .profile_box
 {
 float:left;	
 	
 }
+
+
 
 
 #sidebar{	
@@ -329,6 +329,150 @@ float:left;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* question page */	
+
+#question_page_box{
+	width:700px;
+	background-color:#f8f8f8;
+	border: 1px solid #d3d3d3;
+}
+
+
+#question_bar{
+	border-bottom:1px solid #d3d3d3;
+	width:700px;
+	height:60px
+}
+
+.question_page_profile_picture{
+	width:60px;
+	height:60px;
+	float:left;
+}
+
+
+#question_title{	
+height:40px;
+}
+
+
+#asker, #question_date, #edit_question{	
+	float:left;
+	font-size:13px;
+	padding:0 5px 0 5px;
+}
+
+#edit_question{	
+float:right;	
+}
+
+#question_details{
+	float:left;
+	width:570px;
+}
+
+#question_details h1{
+font-weight: normal;
+font-size:17px;
+padding:0;
+margin:0;
+}
+
+
+#vote_question{
+	width:60px;
+	height:60px;
+	float:right;
+	font-size:13px;
+	
+}
+
+
+
+#question_body{
+	min-height:100px;
+	padding:10px;
+}
+
+
+
+#question_topics{
+	border-top:1px solid #d3d3d3;
+	
+}
+
+
+ /* answers on question page */
+
+.answer_page_box{
+	width:700px;
+	background-color:#f8f8f8;
+	border: 1px solid #d3d3d3;
+	margin-bottom:20px;
+}
+
+.answer_bar{
+	border-bottom:1px solid #d3d3d3;
+	width:700px;
+	height:60px
+}
+
+.answer_page_profile_picture{
+	width:60px;
+	height:60px;
+	float:left;
+}
+
+.answer_details{
+	float:left;
+	width:570px;
+}
+
+.answerer, .answer_date{	
+	float:left;
+	font-size:13px;
+	padding:0 5px 0 5px;
+}
+
+.vote_answer{
+	width:60px;
+	height:60px;
+	float:right;
+	font-size:13px;
+	
+}
+
+
+.answer_body{
+	min-height:50px;
+	padding:10px;
+}
 
 
 

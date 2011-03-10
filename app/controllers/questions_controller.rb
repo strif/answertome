@@ -21,7 +21,10 @@ class QuestionsController < ApplicationController
   
   
 
-  
+  def search
+    @questions = Question.search(params[:search]) 
+    render(:action => "index")
+  end
   
   
   
@@ -54,6 +57,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.xml
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers.order("votes desc,created_at asc")
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @question }

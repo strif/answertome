@@ -6,6 +6,7 @@ Qna::Application.routes.draw do
   match 'contact' =>'static#contact'
   match 'privacy' =>'static#privacy'
   match 'help' =>'static#help'
+  match 'search' =>'questions#search', :as => "search"
 
   resources :users , :path => "member" do
     collection do
@@ -25,6 +26,8 @@ Qna::Application.routes.draw do
       get :without_answers
     end
   end
+  
+ 
    
   resources :profiles, :path => "profile" do
     collection do

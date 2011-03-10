@@ -19,7 +19,10 @@ class Question < ActiveRecord::Base
     #http://stackoverflow.com/questions/3572608/rails-validation-error-messages-customizing-the-attribute-name         
     attr_accessor :tagging        
     validates_presence_of :tagging, :message => ": You have to tag this question with at least 1 topic"         
-    def before_validation
+ 
+    before_validation :validation
+    
+    def validation
        self.tagging = self.topic_names
     end
              
@@ -27,9 +30,9 @@ class Question < ActiveRecord::Base
     scope :approved, where("status = ?", "approved")       
     scope :answered, approved.recent.where("answers_count > ?", 0)
     scope :with_no_answer, approved.recent.where("answers_count IS NULL")
+
     
-    
-    
+ 
 
       
     attr_writer :topic_names
@@ -77,6 +80,15 @@ class Question < ActiveRecord::Base
       self.topics = new_topics
     #end
     end
+  
+    def self.search(search)
+      if search
+       where('body  LIKE ?', "%#{search}%")
+      else
+        scoped
+      end
+    end
+  
   
   
 end

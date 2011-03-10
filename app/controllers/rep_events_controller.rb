@@ -4,9 +4,7 @@ class RepEventsController < ApplicationController
   
 
   def new
-    
     @rep_event = RepEvent.new(params[:rep_event])
-
     @user = User.find(session[:user_id])
     @rep_event.answer_id = params[:answer_id]
     @rep_event.author_id = params[:author_id]

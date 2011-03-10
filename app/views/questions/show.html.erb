@@ -1,19 +1,79 @@
-<%= link_to 'Edit', :controller => 'questions', :action => 'edit' %> |
-<%= link_to 'Back',:controller => 'questions'  %>
-<%= render :partial => @question %>
-Topics: [<%= render :partial => '/topics/topic_only',  :as => :topic, :collection => @question.topics %>]
-<hr>
+<div id="question_page_box">
+	<div id="question_bar">
+		<div class="question_page_profile_picture">					
+			<a href=<%= profile_url(@question.user)%>>					
+				<%= gravatar_for @question.user.email, :size => 60 %>		
+			</a>	
+		</div>
+		
+		<div id="question_details">
+		
+			<div id="question_title"> 
+				<h1><%= h(@question.title) %></h1>
+			</div>
+	
+			<div id="asker">
+					Asked by <%= link_to @question.user.username, profile_url(@question.user) %>
+			</div>
+		
+		
+			<div id="question_date">
+				<%=  time_ago_in_words(@question.created_at)  %> ago
+			</div>
+		
+			
+			<div id="edit_question"> 
+				<%= link_to 'Edit Question', :controller => 'questions', :action => 'edit' %>
+			</div>
+			
+		</div>
+		
+		
+		<div id="vote_question"> 
+			Follow This Question
+		</div>
+	
+			
+	
+		
+		</div>
+ 
+
+
+
+	
+	<div id="question_body">
+	<%=  h(@question.body)  %>	
+		
+	</div>
+	
+	
+	
+	
+	
+	<div id="question_topics">
+		Topics: <%= render :partial => '/topics/topic_only',  :as => :topic, :collection => @question.topics %>
+		
+	</div>
+	
+
+</div>
+
+
+
+
+
+
+
+
+
 
 
 
 <h3>Answers</h3>
-<div id="answers">
-	<%= render :partial => @question.answers.order("votes desc,created_at asc") %>
-	
-	
-	
-	
-</div>
+
+	<%= render :partial => @answers %>
+
 
 
 <%= form_for [@question, Answer.new] do |f| %>

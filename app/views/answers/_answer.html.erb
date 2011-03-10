@@ -1,6 +1,72 @@
-<%= div_for answer do %>
-[<%= answer.votes %>]
-<%= answer.body %>
-<%= link_to 'Vote Up',new_rep_event_path(:answer_id => answer.id, :event_type => "up", :author_id=>answer.user_id, :question_id=>answer.question_id) %> 
-<%= link_to 'Vote Down',new_rep_event_path(:answer_id => answer.id, :event_type => "down", :author_id=>answer.user_id, :question_id=>answer.question_id) %>
-<% end %>
+
+
+
+	
+	
+
+				
+				
+				
+				
+				
+				
+
+
+
+
+<div class="answer_page_box">
+	<div class="answer_bar">
+		<div class="answer_page_profile_picture">					
+			<a href=<%= profile_url(answer.user)%>>
+				<%= gravatar_for answer.user.email, :size => 60 %>
+			</a>	
+		</div>
+
+		<div class="answer_details">
+
+			<div class="answerer">
+					Answered by <%= link_to answer.user.username, profile_url(answer.user) %>
+			</div>
+
+
+			<div class="answer_date">
+					<%=  time_ago_in_words(answer.created_at)  %> ago
+			</div>
+
+
+		
+
+		</div>
+
+
+		<div class="vote_answer"> 
+			<%= link_to 'Vote Up',new_rep_event_path(:answer_id => answer.id, :event_type => "up", :author_id=>answer.user_id, :question_id=>answer.question_id) %> 
+			
+			[<%= answer.votes %>]
+			
+			<%= link_to 'Vote Down',new_rep_event_path(:answer_id => answer.id, :event_type => "down", :author_id=>answer.user_id, :question_id=>answer.question_id) %>
+		</div>
+
+
+
+
+		</div>
+
+
+
+
+
+	<div class="answer_body">
+	<%=  h(answer.body)  %>	
+
+	</div>
+
+
+
+
+
+
+</div>
+
+
+

@@ -7,7 +7,9 @@ Qna::Application.routes.draw do
   match 'privacy' =>'static#privacy'
   match 'help' =>'static#help'
   match 'search' =>'questions#search', :as => "search"
-
+  match 'topic_search' =>'topics#search', :as => "topic_search"
+  
+  
   resources :users , :path => "member" do
     collection do
      get :new

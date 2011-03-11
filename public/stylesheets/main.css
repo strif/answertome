@@ -267,15 +267,13 @@ input:focus, textarea:focus {
 	float:left;
 }
 
-.question_title{
+.question_title, .question_description{
 		width:440px;	
+		margin-left:10px;
 
 }
 
-.question_description{
-		width:440px;	
 
-}
 
 
 .question_details{

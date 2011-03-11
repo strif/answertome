@@ -13,6 +13,19 @@ class TopicsController < ApplicationController
       format.xml  { render :xml => @topics }
     end
   end
+  
+  
+  
+  
+  
+  def search   
+    @topics = Topic.limit50.search(params[:search]) 
+      render(:action => "search")
+  end
+
+
+
+
 
   # GET /topics/1
   # GET /topics/1.xml

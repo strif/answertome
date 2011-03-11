@@ -83,7 +83,7 @@ class Question < ActiveRecord::Base
   
     def self.search(search)
       if search
-       where('body  LIKE ?', "%#{search}%")
+       where('body  ILIKE ? OR title ILIKE ?', "%#{search}%", "%#{search}%")
       else
         scoped
       end

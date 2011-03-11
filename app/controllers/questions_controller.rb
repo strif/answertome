@@ -21,9 +21,13 @@ class QuestionsController < ApplicationController
   
   
 
-  def search
-    @questions = Question.search(params[:search]) 
-    render(:action => "index")
+  def search    
+    if session[:topic_filter] == "On" and session[:user_id]
+      @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent.search(params[:search])  }.flatten.uniq 
+    else
+      @questions = Question.approved.recent.search(params[:search]) 
+    end
+        render(:action => "index")
   end
   
   

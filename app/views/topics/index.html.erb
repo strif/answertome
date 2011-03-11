@@ -1,3 +1,8 @@
+<%= form_tag (topic_search_path, :method => 'get')  do %>
+<p> <%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search", :name => nil %></p>
+<% end %>
+
 <h1>Mosts Questioned topics</h1>
 <%= render :partial => 'topics/topicq', :collection => @topicsq, :as => :topic %>
 <div class="clear"></div>

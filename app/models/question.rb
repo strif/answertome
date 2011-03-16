@@ -80,7 +80,7 @@ class Question < ActiveRecord::Base
       self.topics = new_topics
     #end
     end
-  
+  #Articles.find(:all, :conditions => ["match(title,body) against (?)", "Databases"] )
     def self.search(search)
       if search
        where('body  ILIKE ? OR title ILIKE ?', "%#{search}%", "%#{search}%")

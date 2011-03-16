@@ -20,11 +20,34 @@ class QuestionsController < ApplicationController
   
   
   
+  
+  
+  
+  def home
+    # if topic filter is on, display questions that contain topics that the user is following
+  if session[:topic_filter] == "On" and session[:user_id]
+    @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent }.flatten.uniq 
+  else
+    @questions = Question.approved.recent
+  end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @questions }
+    end
+  end
+  
+  
+  
+  
+  
 
   def search    
     if session[:topic_filter] == "On" and session[:user_id]
       @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent.search(params[:search])  }.flatten.uniq 
     else
+      #find(:all, :conditions => ["match(title,body) against (?)", "Databases"] )
+      # 
+       #@questions = Question.find(:all, :conditions => ["match(title,body) against (?)",["so"] ])
       @questions = Question.approved.recent.search(params[:search]) 
     end
         render(:action => "index")
@@ -61,7 +84,12 @@ class QuestionsController < ApplicationController
   # GET /questions/1.xml
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers.order("votes desc,created_at asc")
+    
+    if !session[:answer_sort]
+    @answers = @question.answers.by_votes
+    else
+    @answers = @question.answers.newest_first
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @question }

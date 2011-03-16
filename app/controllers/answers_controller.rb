@@ -95,4 +95,23 @@ class AnswersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  
+  def answer_sort
+    referer = request.env["HTTP_REFERER"]   
+    if !session[:answer_sort]
+      session[:answer_sort] = "Answer Date"
+    else
+      session.delete(:answer_sort)
+    end    
+    respond_to do |format|
+      # Assigning the sort_text to some string, this cant go inside the redirect_to method
+      session[:answer_sort] ? sort_text = "Answers are now sorted by date" : sort_text = "Answers are now sorted by votes"
+        format.html { redirect_to(referer, :notice => sort_text ) }
+    end   
+  end
+  
+  
+  
 end

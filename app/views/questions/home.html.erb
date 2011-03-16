@@ -1,0 +1,24 @@
+
+
+
+<div id="home_container">
+
+
+<div id="plato_box">
+	</div>
+	
+	<div id="quote_box">
+			<p>Knowledge arrives as long as you ask.</p>
+		</div>
+	
+	<div id="search_box">
+	<%= form_tag (search_path, :method => 'get')  do %>
+	<p> <%= text_field_tag :search, params[:search], :size => 30 %>
+	<%= submit_tag "Search", :name => nil %></p>
+	<% end %>
+	</div>
+	
+
+	</div>
+
+

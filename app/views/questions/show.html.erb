@@ -64,13 +64,11 @@
 
 
 
-
-
-
-
-
-
-<h3>Answers</h3>
+<h3><%= pluralize(@answers.count, 'Answer') %></h3>
+<% unless @answers.empty? %>
+<% session[:answer_sort] ? sort_text = "Sort answers by votes" : sort_text = "Sort answers by date" %>
+<%= link_to sort_text, answer_sort_path %>
+<% end %>
 
 	<%= render :partial => @answers %>
 

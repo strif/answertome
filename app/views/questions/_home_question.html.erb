@@ -1,0 +1,38 @@
+
+		
+			<div class="question_home_body">
+		
+		<div class="answers_home_number">			
+		<%= question.answers_count unless question.answers_count.blank? %>
+		</div>
+			
+		<div class="question_home_title">
+			<%=  link_to_unless_current h(question.title), question %>
+		</div>
+
+		<div class="question_home_description">
+			<%=   truncate(h(question.body), :length => 70)  %>
+		</div>
+
+	</div>
+	
+	
+
+	
+
+	
+		
+		
+		
+		
+
+	
+	
+	
+
+
+
+
+	
+	
+

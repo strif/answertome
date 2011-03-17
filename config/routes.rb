@@ -7,6 +7,7 @@ Qna::Application.routes.draw do
   match 'privacy' =>'static#privacy'
   match 'help' =>'static#help'
   match 'search' =>'questions#search', :as => "search"
+  match 'homepage' =>'questions#home', :as => "homepage"
   match 'topic_search' =>'topics#search', :as => "topic_search"
   
   
@@ -134,7 +135,7 @@ Qna::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "questions#home"
+  root :to => "questions#homepage"
 
   # easy url re-writes
   match 'register' =>'users#new'

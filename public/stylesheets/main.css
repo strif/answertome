@@ -9,6 +9,10 @@ body, html {
 	padding:0;
 	text-align: center;
 	}
+	
+	
+	
+body{font-family:Arial, Helvetica, sans-serif;font-size:13px; }
 		
 div{
 
@@ -490,7 +494,7 @@ margin:0;
  /* Homepage */
 
 #home_container{
-width:700px;
+width:900px;
 height:471px;	
 margin:auto;
 margin-top:50px;
@@ -508,11 +512,13 @@ float:left;
 #search_box{
 padding:30px 0 0 26px;
 float:left;
+
 }
 
 
 #quote_box{
 text-align:left;
+float:left;
 }
 
 #quote_box p{
@@ -520,6 +526,62 @@ font-style:italic;
 float:left;
 margin-left:-100px;
 }
+
+
+
+
+
+
+
+
+ /* home page answers */	
+
+
+.homebox{
+	width:400px;
+	margin:auto;
+	float:left;
+}
+
+
+
+
+.answers_home_number{
+	float:left;	
+	text-align:center;
+	margin-top:10px;
+	height:30px;
+	width:35px;
+}
+
+
+
+.question_home_body{
+	width:350px;
+	height:40px;
+	float:left;
+	margin-top:10px;
+		margin-left:125px;
+	}
+	
+	
+
+.question_home_title, .question_home_description{
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  /* --------Special -------- */

@@ -30,7 +30,7 @@ class Question < ActiveRecord::Base
     scope :approved, where("status = ?", "approved")       
     scope :answered, approved.recent.where("answers_count > ?", 0)
     scope :with_no_answer, approved.recent.where("answers_count IS NULL")
-
+    scope :limit5, limit("5")
     
  
 

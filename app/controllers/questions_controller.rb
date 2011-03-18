@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
 
     # if topic filter is on, display questions that contain topics that the user is following
   if session[:topic_filter] == "On" and session[:user_id]
+        #https://github.com/dougal/acts_as_indexed
      @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent.limit5.find_with_index(params[:search]) }.flatten.uniq   if !params[:search].nil?
   else
     @questions = Question.approved.recent.limit5.find_with_index(params[:search])  if !params[:search].nil?
@@ -68,6 +69,7 @@ class QuestionsController < ApplicationController
   # This uses the answered :scope (see question model)
   def with_answers
   if session[:topic_filter] == "On" and session[:user_id]
+
       @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.answered.recent }.flatten.uniq
     else
       #else display all

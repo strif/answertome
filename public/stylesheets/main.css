@@ -14,7 +14,7 @@ body, html {
 	
 body{font-family:Arial, Helvetica, sans-serif;font-size:13px; }
 		
-div{
+div, ul, li {
 
 		border:0px solid #d3d3d3;
 	}
@@ -524,7 +524,7 @@ float:left;
 #quote_box p{
 font-style:italic;
 float:left;
-margin-left:-100px;
+margin-left:-70px;
 }
 
 
@@ -590,6 +590,97 @@ margin-left:-100px;
 }
 
  /* -------- End of Custom Elements -------- */
+
+a{
+	text-decoration: none;
+}
+
+
+
+
+
+
+/*----------------------------------------------------------------------
+*
+*                             NAVIGATION
+*
+----------------------------------------------------------------------*/
+ul.navigation{  
+	margin: 0 auto; 
+	font-size: 14px; 
+	float:left; 
+	list-style-type: none;
+	}
+	
+ul.navigation li, ul.language li{
+	float: left; 
+	margin-right: 30px; 
+	text-transform: uppercase;
+	}
+	
+ul.navigation li a, ul.language li a{ 
+	text-decoration: none; 
+	padding-bottom: 10px;}
+ul.navigation li a:hover, ul.navigation li a.active, ul.language li a:hover, ul.navigation li a.active{ 
+	color: #FFF; 
+	background-image: url(/images/nav_hover.png); 
+	background-repeat:no-repeat; 
+	background-position:center bottom;
+	}
+
+
+ul.language{
+	font-size: 14px; 
+	float:right; 
+	margin-bottom: 0; 
+	margin-right: 30px; 
+	margin:auto; 
+	list-style-type: none;
+	}
+	
+ul.language li{
+	margin-right: 10px;
+	}
+	
+ul.language li a{
+	padding: 10px;
+	}
+	
+ul.language li a:hover, ul.language li a.active{
+	background: #d3d3d3; 
+	}
+
+
+.header{
+	background: #ededed;
+	 width: 100%; 
+	float:left; 
+	padding: 10px 0 10px 0;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -10,31 +10,40 @@
 
 <body>
 	<%= getmenu %>
-	
-	
-<div id="header">
-<ul id="main_navigation">
-<li><%= link_to 'Home', root_url %></li>
-<li><%= link_to 'Questions', :controller => 'questions' %></li>
-<li><%= link_to 'Answers',  :controller => 'questions' , :action => 'with_answers'  %></li>
-<li><%= link_to 'Ask', :controller => 'questions' , :action => 'new' %></li>
-<li><%= link_to 'Answer Questions',  :controller => 'questions' , :action => 'without_answers'  %></li>
-<li><%= link_to 'Topics', :controller => 'topics' %></li>
-</ul>
 
 
-<ul id="user_navigation">
-<% if !session[:user_id] %>
-<li><%= link_to 'Register', register_url %></li>
-<li><%= link_to 'Login', login_url %></li>
-<% else %>
-<li><%= link_to 'Profile', :controller => 'profiles' , :action => 'index' %></li>
-<li><%= link_to 'Logout', logout_url %></li>
-<% end %>
-</ul>
-</div>
+
+
+
+
+  <div class="header"> 
+    <ul class="navigation"> 
+    		  	<li><%= link_to 'Home', root_url %></li> 
+    		  	<li><%= link_to 'Questions', :controller => 'questions' %></li> 
+    		  	<li><%= link_to 'Answers',  :controller => 'questions' , :action => 'with_answers'  %></li> 
+    		  	<li><%= link_to 'Ask', :controller => 'questions' , :action => 'new' %></li> 
+    		  	<li><%= link_to 'Answer Questions',  :controller => 'questions' , :action => 'without_answers'  %></li> 
+    		<li><%= link_to 'Topics', :controller => 'topics' %></li> 
+    </ul>		
+    <ul class="language"> 
+    <% if !session[:user_id] %>
+    <li><%= link_to 'Register', register_url %></li>
+    <li><%= link_to 'Login', login_url %></li>
+    <% else %>
+    <li><%= link_to 'Profile', :controller => 'profiles' , :action => 'index' %></li>
+    <li><%= link_to 'Logout', logout_url %></li>
+    <% end %>    	
+    </ul>
+ 	</div> 
+  
+
+
+
+
+
+
 <div class="clear"></div>
-<hr>
+
 
 <div id="main">
 <div id="notice"><%= notice %></div>

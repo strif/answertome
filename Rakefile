@@ -6,5 +6,3 @@ require 'rake'
 
 Qna::Application.load_tasks
 
-# require 'rubygems'
-# require 'texticle/tasks'

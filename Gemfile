@@ -22,8 +22,6 @@ gem "pg"
 gem "will_paginate", "~> 3.0.pre2"
 gem "gravtastic", "~> 2.1.3"
 gem "jquery-rails"
-#gem 'texticle', '~> 1.0.4'
-#gem 'acts_as_tsearch',  '~> 0',  :git => 'git://github.com/pka/acts_as_tsearch.git'
 gem 'acts_as_indexed'
 
 

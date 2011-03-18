@@ -1,4 +1,6 @@
-class Question < ActiveRecord::Base
+class Question < ActiveRecord::Base  
+acts_as_indexed :fields => [:title, :body]
+ 
   belongs_to :user
   has_many :answers, :dependent => :destroy  
   has_many :taggings, :dependent => :destroy  
@@ -81,6 +83,8 @@ class Question < ActiveRecord::Base
     #end
     end
   #Articles.find(:all, :conditions => ["match(title,body) against (?)", "Databases"] )
+    
+    
     def self.search(search)
       if search
        where('body  ILIKE ? OR title ILIKE ?', "%#{search}%", "%#{search}%")
@@ -88,7 +92,7 @@ class Question < ActiveRecord::Base
         scoped
       end
     end
-  
+      
   
   
 end

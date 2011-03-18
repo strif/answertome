@@ -5,3 +5,6 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Qna::Application.load_tasks
+
+# require 'rubygems'
+# require 'texticle/tasks'

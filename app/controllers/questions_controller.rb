@@ -23,9 +23,9 @@ class QuestionsController < ApplicationController
 
     # if topic filter is on, display questions that contain topics that the user is following
   if session[:topic_filter] == "On" and session[:user_id]
-     @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent.search(params[:search]).limit5 }.flatten.uniq   if !params[:search].nil?
+     @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent.limit5.find_with_index(params[:search]) }.flatten.uniq   if !params[:search].nil?
   else
-    @questions = Question.approved.recent.limit5.search(params[:search]).limit5  if !params[:search].nil?
+    @questions = Question.approved.recent.limit5.find_with_index(params[:search])  if !params[:search].nil?
   end
      render(:action => "home")
   end
@@ -52,12 +52,12 @@ class QuestionsController < ApplicationController
 
   def search    
     if session[:topic_filter] == "On" and session[:user_id]
-      @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent.search(params[:search])  }.flatten.uniq 
+      @questions = User.find(session[:user_id]).topics.map { |t| t.questions.approved.recent.find_with_index(params[:search])  }.flatten.uniq 
     else
       #find(:all, :conditions => ["match(title,body) against (?)", "Databases"] )
       # 
        #@questions = Question.find(:all, :conditions => ["match(title,body) against (?)",["so"] ])
-      @questions = Question.approved.recent.search(params[:search]) 
+      @questions = Question.approved.recent.find_with_index(params[:search]) 
     end
         render(:action => "index")
   end

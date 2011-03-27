@@ -108,6 +108,7 @@ class QuestionsController < ApplicationController
       for topic in @question.topics
         @page_keywords = @question.topics.collect {|t| t.name}.join ", "
       end
+      @page_keywords << ", " + @question.title
     end
     
     if !session[:answer_sort]

@@ -4,7 +4,7 @@
   
   
   <% unless @page_description.blank? %>
-  <meta name="description" content=" <%= @page_description %> ">
+  <meta name="description" content=" <%= truncate(@page_description, :length => 155 ) %> ">
   <% end %>
   <% unless @page_keywords.blank? %>
   <meta name="keywords" content="<%= @page_keywords %>">

@@ -106,10 +106,10 @@ class QuestionsController < ApplicationController
     
     
     unless  @question.topics.blank?
-      for topic in @question.topics
-        @page_keywords =  topic.name << ", " 
+      for top in @question.topics
+        @page_keywords =  top.name 
       end
-      @page_keywords << @question.title
+      
     end
     
     if !session[:answer_sort]

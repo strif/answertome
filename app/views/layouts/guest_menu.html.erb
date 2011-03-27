@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  
+  
+  <% unless @page_description.blank? %>
+  <meta name="description" content=" <%= @page_description %> ">
+  <% end %>
+  <% unless @page_keywords.blank? %>
+  <meta name="keywords" content="<%= @page_keywords %>">
+  <% end %>
+  
+  
+  
   <title><%= @page_title%></title>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>

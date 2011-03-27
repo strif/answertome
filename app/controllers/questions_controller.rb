@@ -93,8 +93,24 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   # GET /questions/1.xml
-  def show
+    def show
     @question = Question.find(params[:id])
+    
+    #SEO description will be the question title and if the question has an answer then its body is attached.
+    @page_description = "Question about: "
+    @page_description << @question.title
+    unless  @question.answers.blank?
+    @page_description << " Answer: "
+    @page_description << @question.answers.by_votes.first.body
+    end
+    
+    
+    unless  @question.topics.blank?
+      for topic in @question.topics
+        @page_keywords =  topic.name << ", " 
+      end
+      @page_keywords << @question.title
+    end
     
     if !session[:answer_sort]
     @answers = @question.answers.by_votes

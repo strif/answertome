@@ -104,12 +104,10 @@ class QuestionsController < ApplicationController
     @page_description << @question.answers.by_votes.first.body
     end
     
-    
-    unless  @question.topics.blank?
-      for top in @question.topics
-        @page_keywords =  top.name 
+    unless @question.topics.blank?
+      for topic in @question.topics
+        @page_keywords = @question.topics.collect {|t| t.name}.join ", "
       end
-      
     end
     
     if !session[:answer_sort]

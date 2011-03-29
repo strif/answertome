@@ -28,6 +28,7 @@
 
   <div class="header"> 
     <ul class="navigation"> 
+
     		  	<li><%= link_to 'Home', root_url %></li> 
     		  	<li><%= link_to 'Questions', :controller => 'questions' %></li> 
     		  	<li><%= link_to 'Answers',  :controller => 'questions' , :action => 'with_answers'  %></li> 
@@ -48,7 +49,7 @@
   
 
 
-
+<%= link_to image_tag("/images/logo.png", :border=>0), root_url, :class => 'logo'  %>
 
 
 

@@ -64,18 +64,6 @@ class ProfilesController < ApplicationController
     @user = User.find(session[:user_id])
     @profile = Profile.new(params[:profile])
     @profile.user = @user
-   
-    
-    # @question = Question.find(params[:question_id])
-    # @user = User.find(session[:user_id])
-    # @answer = Answer.new(params[:answer])
-    # @answer.created_at = Time.now
-    # @answer.question = @question
-    # @answer.user = @user
-    
-    # @profile = Profile.new(params[:profile])
-    # @profile.id = session[:user_id]
-    # user.profile.create(params[:profile])
     respond_to do |format|
       if @profile.save
         # format.html { redirect_to(@profile, :notice => 'Profile was successfully created.') }
@@ -91,12 +79,11 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.xml
   def update
-    @profile = Profile.find(session[:user_id])
+    @profile = Profile.find(session[:username])
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-          #format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
-          
-        format.html { redirect_to(:controller =>'profiles', :action => 'index', :notice => "Profile was successfully updated.") }
+      #  format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }          
+       format.html { redirect_to(:controller =>'profiles', :action => 'index', :notice => "Profile was successfully updated.") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
